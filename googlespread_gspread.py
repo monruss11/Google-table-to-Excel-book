@@ -1,11 +1,9 @@
 import os
 import sys
 import requests
-# import fastapi
 import gui_window_module as win
 import xlsxwriter
 import httplib2
-# from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
@@ -18,7 +16,7 @@ import pandas as pd
 def make_googlesheets_client():
   global ggl_wrksheet
   # READ CREDIDS FROM FILE
-  creds_json = os.path.dirname(__file__) + "/creds/credentials.json"
+  creds_json = os.path.dirname(__file__) + '/creds/credentials.json'
   gc = gspread.service_account(filename= creds_json)
   str_url=read_data_textbox()
   if str_url=='':
@@ -30,19 +28,17 @@ def make_googlesheets_client():
     except:
       return False
     # CHOICE SHEET IN WORKBOOK !!!!
-    ggl_wrksheet_list=sht.worksheets()
     ggl_wrksheet=sht.get_worksheet(0)
     return True
 
 def read_from_googlesheets():
   global str_data; global lst_result_ggl; global dataframe
   global ggl_wrksheet
-  make_googlesheets_client()
   if make_googlesheets_client()==True:
     lst_result_ggl=ggl_wrksheet.get_all_values()
     dataframe=pd.DataFrame(ggl_wrksheet.get_all_records())
   else:
-    messagebox.showinfo("Information","URL is empty or not valid! \n Please input URL")
+    messagebox.showinfo('Information','URL is empty or not valid! \n Please input URL')
 
 def write_to_googlesheets():
   global str_data; global lst_result_ggl; global dataframe; global ggl_wrksheet
@@ -58,9 +54,9 @@ def write_to_file():
     read_from_googlesheets()
     data.write(str(lst_result_ggl))
     data.close()
-    messagebox.showinfo("Information","File created and writed ! \n Succefuly")
+    messagebox.showinfo('Information','File created and writed ! \n Succefuly')
   except:
-    messagebox.showinfo("Information")
+    messagebox.showinfo('Information')
     raise TypeError('File not created!')
 
 def read_frome_txt_file():
