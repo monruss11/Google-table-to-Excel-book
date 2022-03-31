@@ -14,46 +14,8 @@ import tkinter as tk
 from tkinter import Tk, ttk, Text,filedialog
 import pandas as pd
 
-# CREDENTIALS=\
-# {
-#   "type": "service_account",
-#   "project_id": "steam-capsule-340918",
-#   "private_key_id": "bbcc06042a81650feaef545244344cd701a6ca2e",
-#   "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCKb/S64drUn5Hu\nOJgpXxGjhdFMtm0Okst/nFI6EDFf6Rd7UyX9VgRECgFbYVX88AI3VlUabud8Mue4\nSzzyDIeCDRPFaqviq+zwEmAIYk8LQanLAuV9TF51na6JbPi/W2WTt4Psv/jVKWMO\nPlipVLthXDaFvZ+B4RhlZ2/6kNVjcPcexGtM3k+1i6taWA1+OicZondGqUcryukD\nk15fazarHXoWsa76BaIU+GmRHzAOw50+VqYpYaEc0+AWZD0M/11LbglcstVdUGHL\nj4VJplgqLfVZaGIv3ct7Z+GVgU0Lt+hbZkgXWoWhpOlhLfRXoT+atCFq3R+jULP5\nQQq6/8W1AgMBAAECggEAMymKJDEJO1BX0dcXoR6R+cGgZv36kwq8a4Z9uxi17rDJ\n7Vl+7kAGZpDeDIQOD+MxpnrhC9pV8cgsbCdeOERaJj2oA2tXZ/fLIrRfymlutgXH\n9w+0eZiqRkSGtyJPUgU4pp2Jg4s1Lq5TffWbtcTrVWGLguTgGNN0PTG7qDozqsKP\nTC76wAJT2PoVVQylwHE0oKxB8oFbWY4cVjYBzF9RqtgB224kfFuRWetjxNb6Bbau\naYZ2QL0QICtklKQBlnLzMmJcWDV9lHxQIGwwQfX8Wd7gzw3lwkuYpaHYNRs/ebjp\naPYYUv+0JPc4zh6fIMLDuaExMeq/mQAPvF2s7KbUlwKBgQDDOETvrY2rI+jfKNnV\nVA5RxDEopYZq9fgwhuRYHAp5W/AKqbRhqDKI+4MtfeZ1tAw5k/eZsQyBf1gqbgPv\nWnD7bNxsqxlhfYiJSzSiu3OoGCiPhs+nzteL8VDdKeIQtSPiuC8Wk9HNrHX+Xahh\n12PNhM4Oy5kmXsm/rGQea537VwKBgQC1ieqRr7fYdPjV+rYTik6d9LIDQVCLGbKs\nxcd0tgkEWywNxjUFNXSRJgyNQI1FIBhusVJ1Ge1aXm+FL3RIaGu/5eCFoVcDvfAk\nFkv20i3Hu1vdi3S8QiLrMnv1T82sFHNx+28y0BgoE+0eocJodNuVDlj/Vjmlp5FJ\n8Nx3LL4r0wKBgQCV11faW+00YjC5MULaIlWHXz6YQ0zERp3EqZUVKBjGA9JgbNfe\naVq4l8ydG1jMGXGUtEVFO4cs0pDaqGzuyA2Wfn1GD6JAmTk2oHn7OkRQzpI7cC9t\nTy9U49m8mAxD5LVxrQu/maBc7LX4kuzOhKO/OONsqcuYjwLt0yVZ0CKHqwKBgQCx\nxYGn8qwU0s8OM7nzPqAn/AQKPf6SiLK4j+D3AH+p/WIRhwRKuoMQ1HK8K/drNrfW\nRdzagW417X5FrSew9Fh3jbOlCE5+gpRTsmXnKQDdszKNq8+/vwAU09YhbmmY1loK\nx06oMrFFJeYw9fS7d5vDxk4OlLBU8NfM0YoDRhRgMwKBgQDC4t7Jhhtk60ozBFwm\n/WvmZB5d42lEKeLZdPTT4eF5kkKroIyozm9m4/HmhAJkHqxndbkrhOu5ePIYgj78\nR94x8aGsFk5L1zOIPDXCWRDrIfkO5J4/8+yMjTBuPDpWxuEpo2dF4JGVRydSDgRz\nxow61okKAdmXUrbeg/7XcX8/4Q==\n-----END PRIVATE KEY-----\n",
-#   "client_email": "odessa11@steam-capsule-340918.iam.gserviceaccount.com",
-#   "client_id": "105357641307897168369",
-#   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-#   "token_uri": "https://oauth2.googleapis.com/token",
-#   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-#   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/odessa11%40steam-capsule-340918.iam.gserviceaccount.com"
-# }
 
-
-
-# No gspread google client
-# creds_json = os.path.dirname(__file__) + "/creds/sacc1.json"
-# gc = gspread.service_account(filename= creds_json)
-# # sheet_id = '1Pt23r8uW0oc5FjdyF0Vcn0c4kgJmN7-5YNzgjJQYZ4c'
-# sht= gc.open_by_url('https://docs.google.com/spreadsheets/d/1Pt23r8uW0oc5FjdyF0Vcn0c4kgJmN7-5YNzgjJQYZ4c/edit#gid=0')
-#worksheet=sht.sheet1
-# resp = sht.values().batchGet(spreadsheetId=sheet_id, ranges=["Sheet1"]).execute()
-def file_open_dialog():
-  global file_name; global path_file; global str_data; global n
-  # Build a list of tuples for each file type the file dialog should display
-  my_filetypes = [('excel file','xlsx')]
-
-
-  # Ask the user to select a single file name.
-  file_name = filedialog.askopenfilename(parent=wind,
-                                         initialdir=os.getcwd(),
-                                         title="Please select a file:",
-                                         filetypes=my_filetypes)
-  if file_name=='':
-    messagebox.showinfo("Information","File not selected! \n Please select file")
-  return file_name
-
-
-def make_cooglesheets_client():
+def make_googlesheets_client():
   global ggl_wrksheet
   # READ CREDIDS FROM FILE
   creds_json = os.path.dirname(__file__) + "/creds/credentials.json"
@@ -76,8 +38,8 @@ def make_cooglesheets_client():
 def read_from_googlesheets():
   global str_data; global lst_result_ggl; global dataframe
   global ggl_wrksheet
-  make_cooglesheets_client()
-  if make_cooglesheets_client()==True:
+  make_googlesheets_client()
+  if make_googlesheets_client()==True:
     lst_result_ggl=ggl_wrksheet.get_all_values()
     dataframe=pd.DataFrame(ggl_wrksheet.get_all_records())
   else:
@@ -85,7 +47,7 @@ def read_from_googlesheets():
 
 def write_to_googlesheets():
   global str_data; global lst_result_ggl; global dataframe; global ggl_wrksheet
-  make_cooglesheets_client()
+  make_googlesheets_client()
   lst_result_ggl=ggl_wrksheet.get_all_values()
   df = get_as_dataframe(ggl_wrksheet, parse_dates=True, header=None)
   set_with_dataframe(ggl_wrksheet,dataframe)
