@@ -26,7 +26,6 @@ def make_googlesheets_client():
   else:
     try:
       sht= gc.open_by_url(str_url)
-      #  raise NoValidUrlKeyFound
       gspread.exceptions.NoValidUrlKeyFound()
     except:
       return False
@@ -56,7 +55,6 @@ def write_to_file():
   try:
     file_name= os.path.dirname(__file__) + '/'+'new_file_name.txt'
     data= open(file_name,'w')
-
     read_from_googlesheets()
     data.write(str(lst_result_ggl))
     data.close()
@@ -64,11 +62,11 @@ def write_to_file():
   except:
     messagebox.showinfo("Information")
     raise TypeError('File not created!')
+
 def read_frome_txt_file():
   global lst_result_ggl
   file_name= os.path.dirname(__file__) + '/'+'new_file_name.txt'
   data= open(file_name,'r')
-
   lst_result_ggl=data
   data.close()
 
@@ -82,12 +80,12 @@ def read_data_textbox():
   global str_data
   str_data = str(wind.txt_text.get('1.0','end-1 c')) #!!!!!!! end-1 c - remove addition char from your INPUT !!!!!
   return str_data
+
 def write_to_excel():
   global lst_result_ggl
   workbook = xlsxwriter.Workbook('result.xlsx')
   worksheet = workbook.add_worksheet('Sheet2')
   i=0
-
   while i <len(lst_result_ggl):
     ind_sublist=0
     while ind_sublist<len(lst_result_ggl[i]):
@@ -108,6 +106,5 @@ if __name__== '__main__':
   wind.bt_four['text']='Write to Google \n Table'; wind.bt_four['command']=write_to_googlesheets
   wind.txt_text['width']=40; wind.txt_text.grid(columnspan=3)
   wind.lbl_name['text']='URL of google Table'; wind.lbl_name['width']=20
-
 
   wind.mainloop()
